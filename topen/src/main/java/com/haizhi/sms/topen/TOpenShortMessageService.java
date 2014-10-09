@@ -1,13 +1,13 @@
 package com.haizhi.sms.topen;
 
-import com.haizhi.sms.service.SmsSender;
+import com.haizhi.sms.service.ShortMessageService;
 
 import java.util.Properties;
 
 /**
  * Created by txfan on 10/9/14.
  */
-public class TOpenSmsSender extends SmsSender {
+public class TOpenShortMessageService extends ShortMessageService {
 
     private String username;
 

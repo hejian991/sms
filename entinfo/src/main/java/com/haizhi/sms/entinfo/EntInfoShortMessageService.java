@@ -1,6 +1,6 @@
 package com.haizhi.sms.entinfo;
 
-import com.haizhi.sms.service.SmsSender;
+import com.haizhi.sms.service.ShortMessageService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -16,7 +16,7 @@ import java.util.Properties;
  * Created by txfan on 10/9/14.
  */
 @Slf4j
-public class EntInfoSmsSender extends SmsSender {
+public class EntInfoShortMessageService extends ShortMessageService {
 
     private String url;
 
