@@ -1,11 +1,25 @@
-package com.haizhi.sms.topen;
+package com.haizhi.sms.service;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.util.Properties;
 
 import static org.junit.Assert.assertNotNull;
 
-public class TOpenSmsSenderTest {
+
+public abstract class AbstractSmsSenderTest {
+
+    protected SmsSender smsSender;
+
+    @Before
+    public void init() throws Exception {
+        Properties properties = new Properties();
+        String userHome = System.getProperty("user.home");
+        properties.load(new FileInputStream(userHome + "/haizhi.properties"));
+        smsSender.init(properties);
+    }
 
     // TODO check with 刘润
     // 1. 所有模板后面都加上   【微办公】，还是 【海智】?
@@ -19,20 +33,18 @@ public class TOpenSmsSenderTest {
             "海智微办公验证码：{verificationCode}"
     };
 
-
-    @org.junit.Test
-    public void testSendMessage() throws Exception {
-        Properties properties = new Properties();
-        String userHome = System.getProperty("user.home");
-        properties.load(new FileInputStream(userHome + "/haizhi.properties"));
-        TOpenSmsSender smsSender = new TOpenSmsSender();
-        smsSender.init(properties);
+    @Test
+    public void testSendMessageToChinaMobile() throws Exception {
         // TODO generate a random verification code
-        String randomCode = produceCode();
-        //String result = smsSender.sendMessage("18610741478", "您的验证码是：12345【微办公】");
-        String result = smsSender.sendMessage("18518026478", "您的验证码是："+randomCode+"【微办公】");
+        String result = smsSender.sendMessage("18610741478", "您的验证码是：12345【微办公】");
         assertNotNull(result);
+    }
 
+    @Test
+    public void testSendMessageToChinaUnicom() throws Exception {
+        // TODO generate a random verification code
+        String result = smsSender.sendMessage("18610741478", "您的验证码是：12345【微办公】");
+        assertNotNull(result);
     }
 
     //生成六位验证码

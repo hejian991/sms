@@ -1,10 +1,14 @@
 package com.haizhi.sms.service;
 
+import java.util.Properties;
+
 /**
  * Created by txfan on 10/9/14.
  */
-public interface SmsSender {
+public abstract class SmsSender {
 
-    String sendMessage(String phone, String message);
+    public abstract String sendMessage(String phone, String message);
+
+    public abstract void init(Properties props);
 
 }

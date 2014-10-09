@@ -9,11 +9,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>com.haizhi.sms.topen</artifactId>
+    <artifactId>com.haizhi.sms.entinfo</artifactId>
     <packaging>bundle</packaging>
-    <description>
-        com.haizhi.sms.api OSGi bundle project.
-    </description>
 
     <properties>
         <maven-bundle-plugin.version>2.4.0</maven-bundle-plugin.version>
@@ -39,14 +36,17 @@
             <scope>test</scope>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

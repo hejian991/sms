@@ -7,12 +7,13 @@ import java.util.Properties;
 /**
  * Created by txfan on 10/9/14.
  */
-public class TOpenSmsSender implements SmsSender {
+public class TOpenSmsSender extends SmsSender {
 
     private String username;
 
     private String password;
 
+    @Override
     public void init(Properties props) {
         username = props.getProperty("topen.sms.username");
         password = props.getProperty("topen.sms.password");
