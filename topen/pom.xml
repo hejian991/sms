@@ -11,8 +11,6 @@
 
     <artifactId>com.haizhi.sms.topen</artifactId>
     <packaging>bundle</packaging>
-
-    <name>com.haizhi.sms.api Bundle</name>
     <description>
         com.haizhi.sms.api OSGi bundle project.
     </description>

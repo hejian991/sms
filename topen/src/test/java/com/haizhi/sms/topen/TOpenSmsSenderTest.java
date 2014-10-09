@@ -24,11 +24,13 @@ public class TOpenSmsSenderTest {
     public void testSendMessage() throws Exception {
         Properties properties = new Properties();
         String userHome = System.getProperty("user.home");
-        properties.load(new FileInputStream(userHome + "/topen.properties"));
+        properties.load(new FileInputStream(userHome + "/haizhi.properties"));
         TOpenSmsSender smsSender = new TOpenSmsSender();
         smsSender.init(properties);
         // TODO generate a random verification code
-        String result = smsSender.sendMessage("18610741478", "您的验证码是：12345【微办公】");
+        String randomCode = produceCode();
+        //String result = smsSender.sendMessage("18610741478", "您的验证码是：12345【微办公】");
+        String result = smsSender.sendMessage("18518026478", "您的验证码是："+randomCode+"【微办公】");
         assertNotNull(result);
 
     }

@@ -15,5 +15,11 @@
         <module>api</module>
         <module>topen</module>
     </modules>
-
+    <repositories>
+        <repository>
+            <id>haizhi</id>
+            <name>Haizhi Repository</name>
+            <url>http://ci.haizhi.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
 </project>
