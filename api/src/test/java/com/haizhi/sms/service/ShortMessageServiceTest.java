@@ -24,14 +24,14 @@ public abstract class ShortMessageServiceTest {
     @Test
     public void testSendMessageToChinaMobile() throws Exception {
         // TODO generate a random verification code
-        String result = shortMessageService.sendMessage("13911828086", "您的验证码是：12345【微办公】");
+        String result = shortMessageService.sendMessage("18518026478", "您的验证码是："+generateVcode()+"【微办公】");
         assertNotNull(result);
     }
 
     @Test
     public void testSendMessageToChinaUnicom() throws Exception {
         // TODO generate a random verification code
-        String result = shortMessageService.sendMessage("18610741478", "您的验证码是：12345【微办公】");
+        String result = shortMessageService.sendMessage("18518026478", "您的验证码是："+generateVcode()+"【微办公】");
         assertNotNull(result);
     }
 
@@ -39,7 +39,9 @@ public abstract class ShortMessageServiceTest {
     public void testSendParameterizedMessage() throws Exception {
         String name = "朱升华";
         String vcode = generateVcode();
-        String mobile = "18610741478";
+        String mobile = "18518026478";
+
+
         assertNotNull(shortMessageService.sendMessage(mobile, ShortMessageTemplate.INVITE_ORGANIZATION, mobile));
         assertNotNull(shortMessageService.sendMessage(mobile, ShortMessageTemplate.REGISTER_ORGANIZATION, mobile));
         assertNotNull(shortMessageService.sendMessage(mobile, ShortMessageTemplate.INVITE_PERSON, name, mobile));
@@ -55,7 +57,8 @@ public abstract class ShortMessageServiceTest {
         double code = Math.random();
         temp = (int) (code * 1000000);
         result = Integer.toString(temp);
-        if (temp < 100000) {
+
+        for (int i=result.length(); i<6; i++) {
             result += Integer.toString((int) (Math.random() * 10));
         }
         return result;

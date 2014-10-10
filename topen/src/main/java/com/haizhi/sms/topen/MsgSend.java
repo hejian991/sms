@@ -1,5 +1,7 @@
 package com.haizhi.sms.topen;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.xml.namespace.QName;
 import javax.xml.ws.*;
 import java.net.MalformedURLException;
@@ -12,6 +14,7 @@ import java.util.Properties;
  * JAX-WS RI 2.2.4-b01
  * Generated source version: 2.2
  */
+@Slf4j
 @WebServiceClient(name = "MsgSend", targetNamespace = "http://tempuri.org/", wsdlLocation = "http://122.144.130.36:1210/Services/MsgSend.asmx?WSDL")
 public class MsgSend extends Service {
 
@@ -19,14 +22,10 @@ public class MsgSend extends Service {
     private static WebServiceException MSGSEND_EXCEPTION;
     private static QName MSGSEND_QNAME = new QName("http://tempuri.org/", "MsgSend");
 
-    public static void init(Properties properties) {
+    public static void init(String endpoint) {
         URL url = null;
         WebServiceException e = null;
         try {
-            String endpoint = properties.getProperty("topen.sms.endpoint");
-            if (endpoint == null) {
-                // TODO log error
-            }
             if (!endpoint.endsWith("/")) {
                 endpoint += "/";
             }
