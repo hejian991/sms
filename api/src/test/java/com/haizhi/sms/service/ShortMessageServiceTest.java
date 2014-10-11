@@ -24,7 +24,7 @@ public abstract class ShortMessageServiceTest {
     @Test
     public void testSendMessageToChinaMobile() throws Exception {
         // TODO generate a random verification code
-        String result = shortMessageService.sendMessage("18518026478", "您的验证码是："+generateVcode()+"【微办公】");
+        String result = shortMessageService.sendMessage("18810646033", "您的验证码是："+generateVcode()+"【微办公】");
         assertNotNull(result);
     }
 
@@ -39,8 +39,7 @@ public abstract class ShortMessageServiceTest {
     public void testSendParameterizedMessage() throws Exception {
         String name = "朱升华";
         String vcode = generateVcode();
-        String mobile = "18518026478";
-
+        String mobile = "18810646033";
 
         assertNotNull(shortMessageService.sendMessage(mobile, ShortMessageTemplate.INVITE_ORGANIZATION, mobile));
         assertNotNull(shortMessageService.sendMessage(mobile, ShortMessageTemplate.REGISTER_ORGANIZATION, mobile));

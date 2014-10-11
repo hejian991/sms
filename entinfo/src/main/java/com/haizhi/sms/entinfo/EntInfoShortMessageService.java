@@ -42,14 +42,17 @@ public class EntInfoShortMessageService extends ShortMessageService {
             URL realUrl = new URL(url);
             // 打开和URL之间的连接
             HttpURLConnection conn = (HttpURLConnection) realUrl.openConnection();
+
+            // 发送POST请求必须设置如下两行
+            //conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+
             // 设置通用的请求属性
 //          conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conn.setRequestProperty("Content-Length", Integer.toString(len));
             conn.setRequestProperty("Connection", "Close");
-            // 发送POST请求必须设置如下两行
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
 
             // 获取URLConnection对象对应的输出流
             out = new DataOutputStream(conn.getOutputStream());

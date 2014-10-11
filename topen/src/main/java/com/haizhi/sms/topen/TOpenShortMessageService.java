@@ -4,6 +4,7 @@ import com.haizhi.sms.service.ShortMessageService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Properties;
+import java.util.Vector;
 
 /**
  * Created by txfan on 10/9/14.
@@ -31,11 +32,17 @@ public class TOpenShortMessageService extends ShortMessageService {
             throw new RuntimeException("TOpen Sms server's url is failed to load. The current url is null.");
         }
         MsgSend.init(endpoint);
-        try {
-            server = new MsgSend();
-            spt = server.getMsgSendSoap();
-        } catch (Exception e) {
-            log.error("cannot access to server. The server address or soap port has been changed.");
+        server = new MsgSend();
+        if (server == null)
+        {
+            log.error("cannot access to server.");
+            throw new RuntimeException("cannot access to server.");
+        }
+        spt = server.getMsgSendSoap();
+        if (spt == null)
+        {
+            log.error("cannot access to soap port.");
+            throw new RuntimeException("cannot access to soap port.");
         }
     }
 
@@ -46,7 +53,7 @@ public class TOpenShortMessageService extends ShortMessageService {
         if (password == null)
             log.error("TOpenSms: the password was failed to load from property file. The current password is null.");
         String result = spt.sendMsg(username, password, phone, message, "");
-        if (result.charAt(0) == '-') {
+        if (result.startsWith("-")) {
             switch (result) {
                 case "-1":
                     log.error("soap port was wrong.");
@@ -79,6 +86,7 @@ public class TOpenShortMessageService extends ShortMessageService {
                     log.error("unknown error code.");
                     break;
             }
+            //result = null;
         }
         return result;
     }

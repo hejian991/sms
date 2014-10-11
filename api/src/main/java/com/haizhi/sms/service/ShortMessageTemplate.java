@@ -28,6 +28,6 @@ public class ShortMessageTemplate {
     public static final String ACTIVATTE_ACCOUNT = "{0}为您的海智微办公注册验证码，请在15分钟内完成输入。如非本人操作，请忽略。详询客服 4000659966。【微办公】";
 
     // 忘记密码，通过手机验证码重置，参数{0}为验证码
-    public static final String RESET_PASSWORD = "{0}为您的海智微办公密码找回验证码，请在15分钟内完成输入。如非本人操作，请忽略。【微办公】 ";
+    public static final String RESET_PASSWORD = "{0}为您的海智微办公密码找回验证码，请在15分钟内完成输入。如非本人操作，请忽略。【微办公】";
 
 }
